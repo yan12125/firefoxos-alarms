@@ -14,7 +14,11 @@
     "url": "http://example.com"
   },
   "type": "privileged",
-  "permissions": {},
+  "permissions": {
+    "alarms": {
+      "description": "Required for keeping the app always connected to server."
+    }
+  },
   "installs_allowed_from": [
     "*"
   ],
@@ -25,5 +29,8 @@
       "permissions": {}
     }
   },
-  "default_locale": "en"
+  "default_locale": "en",
+  "messages": [
+    { "alarm": "/index.html" }
+  ]
 }

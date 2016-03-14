@@ -23,5 +23,20 @@ window.addEventListener('DOMContentLoaded', function() {
     // We're using textContent because inserting content from external sources into your page using innerHTML can be dangerous.
     // https://developer.mozilla.org/Web/API/Element.innerHTML#Security_considerations
     message.textContent = translate('message');
+
+    function timeOffset(offset) {
+      return new Date(new Date().getTime() + offset * 1000);
+    }
+
+    var data1 = {name: "alarm1", interval: 3},
+        data2 = {name: "alarm2", interval: 5};
+
+    navigator.mozAlarms.add(timeOffset(data1.interval), "ignoreTimezone", data1);
+    navigator.mozAlarms.add(timeOffset(data2.interval), "ignoreTimezone", data2);
+
+    navigator.mozSetMessageHandler("alarm", function (mozAlarm) {
+      console.log("alarm fired: " + JSON.stringify(mozAlarm.data));
+      navigator.mozAlarms.add(timeOffset(mozAlarm.date.interval), "ignoreTimezone", mozAlarm.data);
+    });
   }
 });
