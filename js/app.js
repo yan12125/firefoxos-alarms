@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     navigator.mozSetMessageHandler("alarm", function (mozAlarm) {
       console.log("alarm fired: " + JSON.stringify(mozAlarm.data));
-      navigator.mozAlarms.add(timeOffset(mozAlarm.date.interval), "ignoreTimezone", mozAlarm.data);
+      navigator.mozAlarms.add(timeOffset(mozAlarm.data.interval), "ignoreTimezone", mozAlarm.data);
     });
   }
 });
