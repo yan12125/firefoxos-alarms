@@ -24,19 +24,19 @@ window.addEventListener('DOMContentLoaded', function() {
     // https://developer.mozilla.org/Web/API/Element.innerHTML#Security_considerations
     message.textContent = translate('message');
 
-    function timeOffset(offset) {
-      return new Date(new Date().getTime() + offset * 1000);
+    function timeOffset(offset, start) {
+      return new Date(new Date().getTime() + (offset + start) * 1000);
     }
 
-    var data1 = {name: "alarm1", interval: 3},
-        data2 = {name: "alarm2", interval: 5};
+    var data1 = {name: "alarm1", interval: 20},
+        data2 = {name: "alarm2", interval: 20};
 
-    navigator.mozAlarms.add(timeOffset(data1.interval), "ignoreTimezone", data1);
-    navigator.mozAlarms.add(timeOffset(data2.interval), "ignoreTimezone", data2);
+    navigator.mozAlarms.add(timeOffset(data1.interval, -20), "ignoreTimezone", data1);
+    navigator.mozAlarms.add(timeOffset(data2.interval, -10), "ignoreTimezone", data2);
 
     navigator.mozSetMessageHandler("alarm", function (mozAlarm) {
       console.log("alarm fired: " + JSON.stringify(mozAlarm.data));
-      navigator.mozAlarms.add(timeOffset(mozAlarm.data.interval), "ignoreTimezone", mozAlarm.data);
+      navigator.mozAlarms.add(timeOffset(mozAlarm.data.interval, 0), "ignoreTimezone", mozAlarm.data);
     });
   }
 });
