@@ -17,7 +17,8 @@
   "permissions": {
     "alarms": {
       "description": "Required for keeping the app always connected to server."
-    }
+    },
+    "device-storage:sdcard": { "access": "readwrite" }
   },
   "installs_allowed_from": [
     "*"
