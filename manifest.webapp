@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "name": "alarms",
+  "name": "FB-alarms",
   "description": "A template with the bare minimum structure",
   "launch_path": "/index.html",
   "icons": {
@@ -17,7 +17,9 @@
   "permissions": {
     "alarms": {
       "description": "Required for keeping the app always connected to server."
-    }
+
+    },
+    "systemXHR": {}
   },
   "installs_allowed_from": [
     "*"
